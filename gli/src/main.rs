@@ -1,7 +1,9 @@
 use std::env;
 use std::fs;
 use crate::lexer::lexer::{Token, lex};
+use crate::parser::parser::{parse, ParseError};
 
+pub mod parser;
 pub mod lexer;
 
 fn main() {
@@ -12,5 +14,5 @@ fn main() {
     for expr in contents.split(";") {
         tokens.append(&mut lex(expr));
     }
-    println!("{:?}", tokens);
+    let tree = parse(&tokens);
 }

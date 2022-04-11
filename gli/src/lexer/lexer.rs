@@ -3,6 +3,7 @@ enum TokenType {
     Num,
     Plus,
     Times,
+    Minus,
     Identifier,
     True,
     False,
@@ -32,6 +33,11 @@ pub fn lex(exp: &str) -> Vec<Token>{
                     token_type: TokenType::Plus,
                     token_text: elem.to_string()                
                 }),
+                "*" => tokens.push(Token {
+                    token_type: TokenType::Times,
+                    token_text: elem.to_string()                
+                }),
+                ""
                 _ => tokens.push(Token {
                     token_type: TokenType::Eof,
                     token_text: elem.to_string()                
